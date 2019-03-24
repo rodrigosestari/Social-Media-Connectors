@@ -1,12 +1,16 @@
 from pytrends.request import TrendReq
 #https://trends.google.com/trends/explore?date=now%207-d&q=the%20most
 #https://trends.google.com/trends/explore?date=now%201-d&q=the%20most
+"""
+ {"comparisonItem":[{"keyword":"the most","geo":"","time":"now 1-d"}],"category":0,"property":""}, 
+ {"exploreQuery":"date=now%201-d&q=the%20most","guestPath":"https://trends.google.com:443/trends/embed/"} 
+"""
 
 # Login to Google. Only need to run this once, the rest of requests will use the same session.
 pytrend = TrendReq()
 
 # Create payload and capture API tokens. Only needed for interest_over_time(), interest_by_region() & related_queries()
-pytrend.build_payload(kw_list=['how many', 'the most'], timeframe='now 7-d')
+pytrend.build_payload(kw_list=['how many', 'the most'],cat=1097, geo='', timeframe='now 7-d')
 
 # Interest Over Time
 interest_over_time_df = pytrend.interest_over_time()

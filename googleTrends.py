@@ -13,8 +13,8 @@ pytrend = TrendReq()
 category = False
 
 # Create payload and capture API tokens. Only needed for interest_over_time(), interest_by_region() & related_queries()
-keys = ['Why do', 'When are', 'the most']
-pytrend.build_payload(kw_list=keys, cat=105, geo='', timeframe='now 7-d')
+keys = ['the top']
+pytrend.build_payload(kw_list=keys, cat=1072, geo='', timeframe='now 7-d')
 if category:
     categories = pytrend.categories()
     with open('categories.json', 'w') as outfile:
@@ -37,5 +37,5 @@ print(related_queries_dict[keys[0]]["rising"])
 hist = pytrend.get_historical_interest(keys, year_start=2019)
 print(hist)
 # Get Google Keyword Suggestions
-suggestions_dict = pytrend.suggestions(keyword="Milan")
+suggestions_dict = pytrend.suggestions(keyword="queen victoria")
 print(suggestions_dict)

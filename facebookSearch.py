@@ -1,21 +1,12 @@
 import os
 
+# https://developers.facebook.com/tools/explorer/?method=GET&path=me%3Ffields%3Did%2Cname&version=v3.2
 import facebook
-import requests
 
-token = str(os.environ.get('facebook_token', ''))
-graph = facebook.GraphAPI(access_token=token, version=2.7)
-pagesdata = requests.get("https://graph.facebook.com/me/accounts?access_token = " + token)
-page_id = "161674417186975"
-posts_on_page = requests.get("https://graph.facebook.com/" + page_id + "/feed?access_token = " + token)
-posts_data = (posts_on_page.json())
-# print posts_data
-for x in posts_data['data']:
-    post_id = x['id']
-reactions_on_post = requests.get("https://graph.facebook.com/" + post_id + "/reactions?access_token = " + token)
-reactions_data = reactions_on_post.json()
-print(reactions_data)
+token = str(os.environ.get('facebook_token',''))
+graph = facebook.GraphAPI(access_token=token, version=3.1)
 
+events = graph.request('/search?q=aquafresh&type=post&limit=10000')
 places = graph.search(type='place',
                       center='37.4845306,-122.1498183',
                       fields='name,location')

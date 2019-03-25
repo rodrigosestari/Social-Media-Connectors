@@ -1,3 +1,7 @@
 pytrends
 TwitterSearch
 tweepy
+#git+https://github.com/mobolic/facebook-sdk.git#egg=facebook-sdk
+facebook-sdk
+bs4
+instagram-explore

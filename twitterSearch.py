@@ -1,9 +1,16 @@
-import tweepy
+import os
 
-consumer_key = ""
-consumer_secret = ""
-access_token = ""
-access_token_secret = ""
+import tweepy
+#https://github.com/R3l3ntl3ss/HeavyMind_Bot
+#https://medium.com/datadriveninvestor/how-i-created-a-twitter-bot-using-python-a68b917d133
+#https://python-twitter.readthedocs.io/en/latest/index.html
+#https://gist.github.com/gdsaxton/b0d36c10bbdb80e26b692a1d1a3e11de
+
+consumer_key = str(os.environ.get('consumer_key', ''))
+consumer_secret = str(os.environ.get('consumer_secret', ''))
+access_token = str(os.environ.get('access_token', ''))
+access_token_secret = str(os.environ.get('access_token_secret', ''))
+
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 
@@ -11,23 +18,36 @@ api = tweepy.API(auth)
 
 public_tweets = api.home_timeline()
 for tweet in public_tweets:
-    print
-    tweet.text
+    print(tweet.text)
+
+import tweepy
+
+
+# override tweepy.StreamListener to add logic to on_status
+class MyStreamListener(tweepy.StreamListener):
+
+    def on_status(self, status):
+        print(status.text)
+
+
+myStreamListener = MyStreamListener()
+myStream = tweepy.Stream(auth=api.auth, listener=myStreamListener)
+myStream.filter(track=['influenza'])
 
 from TwitterSearch import *
 
 try:
     tso = TwitterSearchOrder()  # create a TwitterSearchOrder object
-    tso.set_keywords(['Guttenberg', 'Doktorarbeit'])  # let's define all words we would like to have a look for
-    tso.set_language('de')  # we want to see German tweets only
-    tso.set_include_entities(False)  # and don't give us all those entity information
+    tso.set_keywords(['contagious', 'influenza'])  # let's define all words we would like to have a look for
+    # tso.set_language('en')  # we want to see German tweets only
+    tso.set_include_entities(True)  # and don't give us all those entity information
 
     # it's about time to create a TwitterSearch object with our secret tokens
     ts = TwitterSearch(
-        consumer_key='aaabbb',
-        consumer_secret='cccddd',
-        access_token='111222',
-        access_token_secret='333444'
+        consumer_key=consumer_key,
+        consumer_secret=consumer_secret,
+        access_token=access_token,
+        access_token_secret=access_token_secret
     )
 
     # this is where the fun actually starts :)

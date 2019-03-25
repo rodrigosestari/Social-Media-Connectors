@@ -31,14 +31,14 @@ class MyStreamListener(tweepy.StreamListener):
 
 
 myStreamListener = MyStreamListener()
-myStream = tweepy.Stream(auth=api.auth, listener=myStreamListener)
-myStream.filter(track=['influenza'])
+#myStream = tweepy.Stream(auth=api.auth, listener=myStreamListener)
+#myStream.filter(track=['influenza'])
 
 from TwitterSearch import *
 
 try:
     tso = TwitterSearchOrder()  # create a TwitterSearchOrder object
-    tso.set_keywords(['contagious', 'influenza'])  # let's define all words we would like to have a look for
+    tso.set_keywords(['vaccines', 'cause', 'autism'])  # let's define all words we would like to have a look for
     # tso.set_language('en')  # we want to see German tweets only
     tso.set_include_entities(True)  # and don't give us all those entity information
 

@@ -5,3 +5,5 @@ tweepy
 facebook-sdk
 bs4
 instagram-explore
+pytube
+praw

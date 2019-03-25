@@ -20,10 +20,6 @@ if category:
     with open('categories.json', 'w') as outfile:
         json.dump(categories, outfile, indent=2)
 
-# Get Google Hot Trends data
-trending_searches_df = pytrend.trending_searches()
-print(trending_searches_df.head())
-
 # Interest Over Time
 interest_over_time_df = pytrend.interest_over_time()
 print(interest_over_time_df.head())
@@ -43,9 +39,3 @@ print(hist)
 # Get Google Keyword Suggestions
 suggestions_dict = pytrend.suggestions(keyword="Milan")
 print(suggestions_dict)
-
-
-
-# Get Google Top Charts
-# top_charts_df = pytrend.top_charts(cid='actors', date=201611)
-# print(top_charts_df.head())

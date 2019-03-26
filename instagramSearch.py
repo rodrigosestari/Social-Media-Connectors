@@ -127,11 +127,13 @@ class HashTagSearch(metaclass=ABCMeta):
                 success = True
                 break
             except JSONDecodeError as de:
+                print(de)
                 # no valid JSON retured, most likely wrong query_id resulting in 'Oops, an error occurred.'
                 pass
         if not success:
             log.error("Error extracting Query Id, exiting")
-            sys.exit(1)
+            print("Error extracting Query Id, exiting")
+
 
         while end_cursor is not None:
             url = "https://www.instagram.com/graphql/query/?query_hash=%s&tag_name=%s&first=12&after=%s" % (
@@ -234,7 +236,6 @@ import instagram_explore as ie
 # Search tag name
 res = ie.tag('cat')
 print(res.data)                   # All
-print(res.data['media']['nodes']) # Media list
 
 # Next page
 data, cursor = ie.tag('cat', res.cursor)

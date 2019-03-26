@@ -1,12 +1,10 @@
 import pprint
 import apiclient
+import os
 
-from googleapiclient.discovery import build
-
-
+DEVELOPER_KEY = str(os.environ.get('google_DEVELOPER_KEY', ''))
 def main():
-    service = apiclient.discovery.build("customsearch", "v1",
-                    developerKey="AIzaSyDRRpR3GS1F1_jKNNM9HCNd2wJQyPG3oN0")
+    service = apiclient.discovery.build("customsearch", "v1",developerKey=DEVELOPER_KEY)
 
     res = service.cse().list(
         q='lectures',

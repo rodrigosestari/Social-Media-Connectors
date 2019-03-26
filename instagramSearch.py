@@ -229,22 +229,31 @@ class HashTagSearchExample(HashTagSearch):
             self.total_posts += 1
             print("%i - %s" % (self.total_posts, post.processed_text()))
 
-
-if __name__ == '__main__':
-    log.basicConfig(level=log.INFO)
-    HashTagSearchExample().extract_recent_tag("christmas")
-
 import instagram_explore as ie
 
 # Search tag name
 res = ie.tag('cat')
-print(res.data)
+print(res.data)                   # All
+print(res.data['media']['nodes']) # Media list
 
 # Next page
 data, cursor = ie.tag('cat', res.cursor)
 
 # Image only
 images = ie.tag_images('cat').data
+
+
+import instagram_explore as ie
+
+# Search location id
+res = ie.location('213163910')
+print(res.data)
+
+# Next page
+data, cursor = ie.location('213163910', res.cursor)
+
+# Image only
+images = ie.location_images('213163910').data
 
 import instagram_explore as ie
 
@@ -254,3 +263,10 @@ print(res.data)
 
 # Image only
 image = ie.media_image('BFRO_5WBQfc').data
+
+
+
+
+log.basicConfig(level=log.INFO)
+HashTagSearchExample().extract_recent_tag("palmeiras")
+

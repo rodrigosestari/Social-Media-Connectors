@@ -1,6 +1,7 @@
 git+https://github.com/rodrigosestari/pytrends.git#egg=pytrends
-TwitterSearch
 tweepy
+
+
 git+https://github.com/mobolic/facebook-sdk.git#egg=facebook-sdk
 #facebook-sdk
 bs4

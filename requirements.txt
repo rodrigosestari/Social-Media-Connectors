@@ -1,10 +1,11 @@
 git+https://github.com/rodrigosestari/pytrends.git#egg=pytrends
 tweepy
+praw
+pytube
+google-api-python-client
 
 
 git+https://github.com/mobolic/facebook-sdk.git#egg=facebook-sdk
 #facebook-sdk
 bs4
 instagram-explore
-pytube
-praw

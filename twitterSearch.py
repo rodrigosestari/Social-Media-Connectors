@@ -1,10 +1,10 @@
 import os
 import tweepy
 
-consumer_key = str(os.environ.get('consumer_key', ''))
-consumer_secret = str(os.environ.get('consumer_secret', ''))
-access_token = str(os.environ.get('access_token', ''))
-access_token_secret = str(os.environ.get('access_token_secret', ''))
+consumer_key = str(os.environ.get('twitter_consumer_key', ''))
+consumer_secret = str(os.environ.get('twitter_consumer_secret', ''))
+access_token = str(os.environ.get('twitter_access_token', ''))
+access_token_secret = str(os.environ.get('twitter_access_token_secret', ''))
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)

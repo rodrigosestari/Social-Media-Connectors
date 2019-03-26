@@ -104,8 +104,8 @@ class HashTagSearch(metaclass=ABCMeta):
         self.save_results(posts)
 
         end_cursor = \
-        shared_data['entry_data']['TagPage'][0]['graphql']['hashtag']['edge_hashtag_to_media']['page_info'][
-            'end_cursor']
+            shared_data['entry_data']['TagPage'][0]['graphql']['hashtag']['edge_hashtag_to_media']['page_info'][
+                'end_cursor']
 
         # figure out valid queryId
         success = False
@@ -117,7 +117,7 @@ class HashTagSearch(metaclass=ABCMeta):
                 'after': end_cursor
             }
             url = "https://www.instagram.com/graphql/query/?query_hash=%s&variables=%s" % (
-            potential_id, json.dumps(variables))
+                potential_id, json.dumps(variables))
             try:
                 data = requests.get(url).json()
                 if data['status'] == 'fail':
@@ -234,9 +234,8 @@ if __name__ == '__main__':
     log.basicConfig(level=log.INFO)
     HashTagSearchExample().extract_recent_tag("christmas")
 
-
-
 import instagram_explore as ie
+
 # Search tag name
 res = ie.tag('cat')
 print(res.data)
@@ -247,8 +246,8 @@ data, cursor = ie.tag('cat', res.cursor)
 # Image only
 images = ie.tag_images('cat').data
 
-
 import instagram_explore as ie
+
 # Search media code
 res = ie.media('BFRO_5WBQfc')
 print(res.data)

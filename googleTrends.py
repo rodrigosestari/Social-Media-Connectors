@@ -20,22 +20,29 @@ pd.set_option('max_colwidth', 800)
 realtimeTrends = pytrend.trending_realtime(cat='all', geo='US')
 print(realtimeTrends.to_string())
 
-# Real Time
+# Treding daily
 dailyTrends = pytrend.top_daily(geo='US')
 print(dailyTrends.to_string())
 
-# Interest by Region
+
 interest_by_region_df = pytrend.interest_by_region(resolution="COUNTRY")
 print(interest_by_region_df.sort_values(keys[0], ascending=False))
 
+# Related Topics, returns a dictionary of dataframes
+related_topics_dict = pytrend.related_topics()
+print(related_topics_dict[keys[0]]["top"])
+print(related_topics_dict[keys[0]]["rising"])
+
 # Related Queries, returns a dictionary of dataframes
 related_queries_dict = pytrend.related_queries()
-
 print(related_queries_dict[keys[0]]["top"])
 print(related_queries_dict[keys[0]]["rising"])
 
+
+#historical interest
 hist = pytrend.get_historical_interest(keys, year_start=2019)
 print(hist)
+
 # Get Google Keyword Suggestions
 suggestions_dict = pytrend.suggestions(keyword="queen victoria")
 print(suggestions_dict)

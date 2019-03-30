@@ -65,3 +65,16 @@ print(hist.to_string())
 # Get Google Keyword Suggestions
 suggestions_dict = pytrend.suggestions(keyword="Pacers vs Celtics")
 print(suggestions_dict)
+
+
+pytrend.build_payload(kw_list=[], cat=1072, geo='', gprop="youtube", timeframe='today 1-m')
+
+# Related Topics, returns a dictionary of dataframes
+related_topics_dict = pytrend.related_topics()
+print(related_topics_dict[list(related_topics_dict)[0]]["top"])
+print(related_topics_dict[list(related_topics_dict)[0]]["rising"])
+
+# Related Queries, returns a dictionary of dataframes
+related_queries_dict = pytrend.related_queries()
+print(related_queries_dict[list(related_queries_dict)[0]]["top"])
+print(related_queries_dict[list(related_queries_dict)[0]]["rising"])
